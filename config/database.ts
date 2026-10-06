@@ -2,6 +2,10 @@ import app from '@adonisjs/core/services/app'
 import env from '#start/env'
 import { defineConfig } from '@adonisjs/lucid'
 
+function mysqlUser() {
+  return env.get('DB_USER') ?? env.get('DB_USERNAME')
+}
+
 const dbConfig = defineConfig({
   connection: env.get('DB_CONNECTION'),
 
@@ -27,7 +31,7 @@ const dbConfig = defineConfig({
       connection: {
         host: env.get('DB_HOST'),
         port: env.get('DB_PORT'),
-        user: env.get('DB_USER'),
+        user: mysqlUser(),
         password: env.get('DB_PASSWORD', ''),
         database: env.get('DB_DATABASE'),
       },
