@@ -33,32 +33,42 @@ const nav: NavItem[] = [
 export default function AppLayout({ children }: { children: ReactNode }) {
   return (
     <>
-      <header className="header header--bar">
-        <div className="header__inner">
-          <Logo size={24} href="dashboard" />
-          <div className="header__right">
-            <ThemeToggle />
-            <Form route="session.destroy">
-              <button type="submit" className="btn btn--secondary btn--sm">
-                <LogOut size={15} /> Déconnexion
-              </button>
-            </Form>
+      <div className="app-shell">
+        <aside className="sidebar">
+          <div className="sidebar__brand">
+            <Logo size={22} href="dashboard" />
           </div>
-        </div>
-      </header>
 
-      <nav className="subnav">
-        <div className="subnav__inner">
-          {nav.map(({ label, route, icon: Icon }) => (
-            <NavLink key={label} route={route} className="subnav__item">
-              {Icon && <Icon size={14} />}
-              {label}
-            </NavLink>
-          ))}
-        </div>
-      </nav>
+          <nav className="sidebar__nav" aria-label="Navigation principale">
+            {nav.map(({ label, route, icon: Icon }) => (
+              <NavLink
+                key={label}
+                route={route}
+                exact={route === 'dashboard'}
+                className="sidebar__item"
+              >
+                {Icon && <Icon size={16} />}
+                <span>{label}</span>
+              </NavLink>
+            ))}
+          </nav>
+        </aside>
 
-      <div className="app-main">{children}</div>
+        <div className="app-shell__content">
+          <header className="app-topbar">
+            <div className="app-topbar__actions">
+              <ThemeToggle />
+              <Form route="session.destroy">
+                <button type="submit" className="btn btn--secondary btn--sm">
+                  <LogOut size={15} /> Déconnexion
+                </button>
+              </Form>
+            </div>
+          </header>
+
+          <main className="app-main">{children}</main>
+        </div>
+      </div>
       <FlashToasts />
     </>
   )

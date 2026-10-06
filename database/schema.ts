@@ -17,11 +17,11 @@ export class AchatDetailSchema extends BaseModel {
   @column()
   declare lotId: string
   @column()
-  declare prixUnitaire: number
+  declare prixUnitaire: string
   @column()
   declare quantite: number
   @column()
-  declare sousTotal: number
+  declare sousTotal: string
 }
 
 export class AchatSchema extends BaseModel {
@@ -36,7 +36,7 @@ export class AchatSchema extends BaseModel {
   @column({ isPrimary: true })
   declare id: string
   @column()
-  declare montantTotal: number
+  declare montantTotal: string
   @column()
   declare numeroAchat: string
   @column()
@@ -91,7 +91,7 @@ export class LotSchema extends BaseModel {
   @column()
   declare numeroLot: string
   @column()
-  declare prixAchat: number
+  declare prixAchat: string
   @column()
   declare quantite: number
   @column.dateTime({ autoCreate: true, autoUpdate: true })
@@ -112,7 +112,7 @@ export class MedicamentSchema extends BaseModel {
   @column()
   declare nom: string
   @column()
-  declare prixVente: number
+  declare prixVente: string
   @column()
   declare seuilAlerte: number
   @column.dateTime({ autoCreate: true, autoUpdate: true })
@@ -148,11 +148,11 @@ export class VenteDetailSchema extends BaseModel {
   @column()
   declare lotId: string
   @column()
-  declare prixUnitaire: number
+  declare prixUnitaire: string
   @column()
   declare quantite: number
   @column()
-  declare sousTotal: number
+  declare sousTotal: string
   @column()
   declare venteId: string
 }
@@ -165,7 +165,7 @@ export class VenteSchema extends BaseModel {
   @column({ isPrimary: true })
   declare id: string
   @column()
-  declare montantTotal: number
+  declare montantTotal: string
   @column()
   declare numeroVente: string
   @column()
